@@ -1,8 +1,17 @@
 # AWS Lambda Node Container
 
+## *(NO LONGER WORKING)*
+
+This project was working for a few weeks but has since stopped working. As you will see if you read the code, this project is doing the bare minimum, and so it's quite surprising that it has broken so quickly.
+
+It now produces the following error when tested in AWS: "Runtime.InvalidEntrypoint"
+
+## About this project
+
 The minimum you need to get Node running in a container using Amazon's image.
 
-**Note: this repository is not affiliated with Amazon.**
+- **Note 1: this repository is not affiliated with Amazon.**
+- **Note 2: Container images regularly break or become outdated and must be updated when resources are available.**
 
 [Containers currently have about 10gb space to use,](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html) whereas zip functions have about 250mb. So for many interesting use cases you will need to use a container.
 
@@ -14,6 +23,7 @@ This template exists because it is actually fairly hard to find pre-made lambda 
 ### Local Setup
 
 1. `docker build -t <image name> .`
+    - or `docker build --platform linux/amd64 -t <image name> .` for arm
 2. `docker run -p 9000:8080 <image name>`
 3. `curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{"payload":"Hi"}'`
 
